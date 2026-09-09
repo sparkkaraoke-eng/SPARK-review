@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Share Your Spark Experience</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, #14276b 0%, #080b22 35%, #05050c 70%);
+      color: #ffffff;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #080915;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.65);
+      overflow: hidden;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      height: 400px;
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(4, 6, 18, 0.08) 0%,
+          rgba(4, 6, 18, 0.10) 42%,
+          rgba(8, 9, 21, 0.96) 100%
+        ),
+        url("SPARK-cover.png");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 25px 24px 28px;
+    }
+
+    .hero-logo {
+      width: min(330px, 82%);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.75));
+    }
+
+    /* INTRO */
+
+    .intro {
+      text-align: center;
+      padding: 6px 28px 30px;
+    }
+
+    .intro h1 {
+      font-size: 29px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      color: #bfc5dc;
+      font-size: 15px;
+      max-width: 510px;
+      margin: auto;
+    }
+
+    .gold-line {
+      width: 52px;
+      height: 3px;
+      border-radius: 20px;
+      margin: 19px auto 0;
+      background: linear-gradient(
+        90deg,
+        #b77a22,
+        #ffe79a,
+        #d8a741
+      );
+    }
+
+    /* SECTIONS */
+
+    .section {
+      padding: 26px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .step-label {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: #d7b765;
+      margin-bottom: 7px;
+    }
+
+    .section h2 {
+      font-size: 23px;
+      margin-bottom: 7px;
+    }
+
+    .section-subtitle {
+      color: #9fa6bd;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    /* OPTIONS */
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+    }
+
+    .option {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(28, 31, 61, 0.92),
+          rgba(13, 14, 32, 0.95)
+        );
+      color: #ffffff;
+      border-radius: 15px;
+      min-height: 88px;
+      padding: 15px 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .option:hover {
+      transform: translateY(-1px);
+      border-color: rgba(120, 152, 255, 0.65);
+    }
+
+    .option.selected {
+      border-color: #d8b35a;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(53, 53, 92, 1),
+          rgba(20, 20, 43, 1)
+        );
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 219, 132, 0.25),
+        0 0 18px rgba(94, 116, 255, 0.17);
+    }
+
+    .option-icon {
+      font-size: 25px;
+      width: 31px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    /* TEXTAREA */
+
+    textarea {
+      width: 100%;
+      min-height: 115px;
+      resize: vertical;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 14px;
+      background: #111326;
+      color: #fff;
+      padding: 16px;
+      outline: none;
+      font-family: inherit;
+      font-size: 15px;
+    }
+
+    textarea::placeholder {
+      color: #707890;
+    }
+
+    textarea:focus {
+      border-color: rgba(215, 183, 101, 0.75);
+    }
+
+    /* BUTTONS */
+
+    .generate-btn {
+      width: 100%;
+      border: none;
+      border-radius: 15px;
+      padding: 17px 18px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #101018;
+      cursor: pointer;
+      margin-top: 21px;
+
+      background:
+        linear-gradient(
+          100deg,
+          #b97f28,
+          #ffe39a,
+          #c89237
+        );
+
+      box-shadow: 0 6px 25px rgba(215, 170, 79, 0.20);
+    }
+
+    .generate-btn:hover {
+      filter: brightness(1.07);
+    }
+
+    /* REVIEW RESULT */
+
+    .result {
+      display: none;
+      margin-top: 22px;
+      padding: 20px;
+      background: #111326;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 16px;
+    }
+
+    .result-title {
+      color: #d7b765;
+      font-size: 12px;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      margin-bottom: 11px;
+      font-weight: bold;
+    }
+
+    #reviewText {
+      color: #f4f4f7;
+      font-size: 15px;
+      line-height: 1.75;
+      white-space: pre-wrap;
+    }
+
+    .review-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+      margin-top: 18px;
+    }
+
+    .small-btn {
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .copy-btn {
+      background: #ffffff;
+      color: #0c0d16;
+    }
+
+    .another-btn {
+      background: transparent;
+      color: #ffffff;
+    }
+
+    .small-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .copy-status {
+      text-align: center;
+      color: #b8e5bc;
+      font-size: 13px;
+      min-height: 21px;
+      margin-top: 9px;
+    }
+
+    /* PLATFORMS */
+
+    .platform-section {
+      display: none;
+      padding: 28px 24px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+    }
+
+    .platform-section h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .platform-section p {
+      font-size: 14px;
+      color: #969db3;
+      margin-bottom: 20px;
+    }
+
+    .platform-buttons {
+      display: grid;
+      gap: 12px;
+    }
+
+    .platform-btn {
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    .google {
+      background: #ffffff;
+      color: #171717;
+    }
+
+    .yelp {
+      background: #d32323;
+      color: #ffffff;
+    }
+
+    .platform-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 24px;
+      text-align: center;
+      color: #62687a;
+      font-size: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 520px) {
+      .hero {
+        height: 345px;
+      }
+
+      .hero-logo {
+        width: 76%;
+      }
+
+      .intro h1 {
+        font-size: 25px;
+      }
+
+      .section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .options {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+
+      .option {
+        min-height: 92px;
+        padding: 13px 10px;
+        font-size: 13px;
+      }
+
+      .option-icon {
+        font-size: 22px;
+        width: 26px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <img
+      src="SPARK-logo.png"
+      alt="Spark Karaoke Lounge"
+      class="hero-logo"
+    />
+  </section>
+
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <h1>How was your visit?</h1>
+
+    <p>
+      Tell us what you enjoyed and we'll help you put your experience into words.
+    </p>
+
+    <div class="gold-line"></div>
+
+  </section>
+
+
+  <!-- STEP 1 -->
+
+  <section class="section">
+
+    <div class="step-label">Step 1</div>
+
+    <h2>What did you enjoy?</h2>
+
+    <p class="section-subtitle">
+      Select everything that stood out during your visit.
+    </p>
+
+
+    <div class="options" id="step1">
+
+      <button
+        type="button"
+        class="option"
+        data-value="latestSongs"
+      >
+        <span class="option-icon">🎵</span>
+        <span>Latest Songs</span>
+      </button>
+
+
+      <button
+        type="button"
+        class="option"
+        data-value="food"
+      >
+        <span class="option-icon">🍟</span>
+        <span>Great Food & Snacks</span>
+      </button>
+
+
+      <button
+        type="button"
+        class="option"
+        data-value="service"
+      >
+        <span class="option-icon">😊</span>
+        <span>Friendly Service</span>
+      </button>
+
+
+      <button
+        type="button"
+        class="option"
+        data-value="sound"
+      >
+        <span class="option-icon">🎤</span>
+        <span>Great Sound System</span>
+      </button>
+
+
+      <button
+        type="button"
+        class="option"
+        data-value="atmosphere"
+      >
+        <span class="option-icon">✨</span>
+        <span>Amazing Atmosphere</span>
+      </button>
+
+
+      <button
+        type="button"
+        class="option"
+        data-value="rooms"
+      >
+        <span class="option-icon">🛋️</span>
+        <span>Comfortable Private Rooms</span>
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEP 2 -->
+
+  <section class="section">
+
+    <div class="step-label">Step 2</div>
+
+    <h2>What made your visit special?</h2>
+
+    <p class="section-subtitle">
+      Choose any that match your experience.
+    </p>
+
+
+    <div class="options" id="step2">
+
+      <button
+        type="button"
+        class="option"
+        data-value="party"
+      >
+        <span class="option-icon">🎉</span>
+        <span>Perfect for Parties</span>
+      </button>
+
+
+      <button
+        type="button"
+        class="option"
+        data-value="groups"
+      >
+        <span class="option-icon">👯</span>
+        <span>Great for Groups</span>
+      </button>
+
+
+      <button
+        type="button"
+        class="option"
+        data-value="drinks"
+      >
+        <span class="option-icon">🥂</span>
+        <span>Drinks Selection</span>
+      </button>
+
+
+      <button
+        type="button"
+        class="option"
+        data-value="clean"
+      >
+        <span class="option-icon">🧼</span>
+        <span>Clean & Comfortable</span>
+      </button>
+
+
+      <button
+        type="button"
+        class="option"
+        data-value="songSelection"
+      >
+        <span class="option-icon">🎶</span>
+        <span>Easy Song Selection</span>
+      </button>
+
+
+      <button
+        type="button"
+        class="option"
+        data-value="return"
+      >
+        <span class="option-icon">💫</span>
+        <span>Would Come Again</span>
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEP 3 -->
+
+  <section class="section">
+
+    <div class="step-label">Step 3</div>
+
+    <h2>Anything else?</h2>
+
+    <p class="section-subtitle">
+      Optional — add a personal detail about your visit.
+    </p>
+
+
+    <textarea
+      id="extraText"
+      maxlength="260"
+      placeholder="For example: We came for a birthday, the staff was very helpful, or we had a great night with friends..."
+    ></textarea>
+
+
+    <button
+      type="button"
+      class="generate-btn"
+      onclick="generateReview()"
+    >
+      Generate My Review
+    </button>
+
+
+    <!-- REVIEW RESULT -->
+
+    <div class="result" id="result">
+
+      <div class="result-title">
+        Your Review Draft
+      </div>
+
+      <div id="reviewText"></div>
+
+
+      <div class="review-actions">
+
+        <button
+          type="button"
+          class="small-btn copy-btn"
+          onclick="copyReview()"
+        >
+          Copy Review
+        </button>
+
+        <button
+          type="button"
+          class="small-btn another-btn"
+          onclick="generateReview()"
+        >
+          Try Another
+        </button>
+
+      </div>
+
+      <div
+        class="copy-status"
+        id="copyStatus"
+      ></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REVIEW PLATFORMS -->
+
+  <section
+    class="platform-section"
+    id="platformSection"
+  >
+
+    <h2>Ready to share?</h2>
+
+    <p>
+      Copy your review above, then choose where you'd like to post it.
+    </p>
+
+
+    <div class="platform-buttons">
+
+      <a
+        href="https://g.page/r/Ce7O9_dyHZt7EBM/review"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="platform-btn google"
+      >
+        Continue to Google
+      </a>
+
+
+      <a
+        href="https://www.yelp.com/writeareview/biz/jeWfEnLjBxF3rt0fcAl-QA?return_url=%2Fbiz%2FjeWfEnLjBxF3rt0fcAl-QA&review_origin=biz-details-war-button"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="platform-btn yelp"
+      >
+        Visit us on Yelp
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+    Spark Karaoke Lounge
+  </div>
+
+</div>
+
+
+
+<script>
+
+  /* -------------------------
+     OPTION SELECTION
+  ------------------------- */
+
+  document.querySelectorAll(".option").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      button.classList.toggle("selected");
+
+    });
+
+  });
+
+
+  /* -------------------------
+     REVIEW PHRASES
+  ------------------------- */
+
+  const phrases = {
+
+    latestSongs: [
+      "They had a really good selection of newer songs, which made the karaoke experience even more fun.",
+      "I was impressed by how many current and popular songs they had available.",
+      "The song selection was great, especially if you're looking for newer releases.",
+      "There were plenty of newer songs to choose from, so everyone in our group found something they wanted to sing."
+    ],
+
+    food: [
+      "They also had a surprisingly good variety of food and snacks to choose from.",
+      "The food and snack selection was much better than I expected for a karaoke spot.",
+      "We ordered a few snacks during the night and really enjoyed having so many options.",
+      "There were plenty of food and snack choices, which was perfect for a longer karaoke night."
+    ],
+
+    service: [
+      "The staff was friendly and helpful throughout our visit.",
+      "Service was attentive and everyone we interacted with was really nice.",
+      "The staff made the whole experience easy and enjoyable.",
+      "Everyone working there was welcoming and helpful."
+    ],
+
+    sound: [
+      "The sound system was excellent and made singing feel even more fun.",
+      "The microphones and sound quality were great.",
+      "The karaoke setup sounded really good and the equipment worked smoothly.",
+      "The sound system was one of the highlights of the night."
+    ],
+
+    atmosphere: [
+      "The lighting and atmosphere gave the place a really fun nightlife feel.",
+      "The whole place had a cool, modern atmosphere that felt perfect for a night out.",
+      "I really liked the blue and neon lighting throughout the space.",
+      "The atmosphere was energetic and stylish without feeling too crowded."
+    ],
+
+    rooms: [
+      "Our private room was comfortable and gave us plenty of space to enjoy the night.",
+      "The private karaoke room was comfortable and worked perfectly for our group.",
+      "The room felt spacious and comfortable.",
+      "Having a private room made the experience much more relaxed and fun."
+    ],
+
+    party: [
+      "This would be a great place for birthdays or celebrations.",
+      "It's definitely a fun option for birthday parties and special occasions.",
+      "The setup would work really well for a party or celebration.",
+      "I could definitely see coming back here for another birthday or special event."
+    ],
+
+    groups: [
+      "It's a great spot to come with a group of friends.",
+      "The experience was perfect for a group night out.",
+      "This is the kind of place that works really well for groups.",
+      "We had a great time as a group and everyone found something they enjoyed."
+    ],
+
+    drinks: [
+      "They also had a nice selection of drinks available throughout the night.",
+      "The drink selection gave us plenty of options.",
+      "There were plenty of drinks to choose from while we were singing.",
+      "Having a good variety of drinks made the night even better."
+    ],
+
+    clean: [
+      "Everything felt clean and comfortable during our visit.",
+      "The space was clean, comfortable, and well maintained.",
+      "I appreciated how clean and organized everything felt.",
+      "The room and common areas were clean and comfortable."
+    ],
+
+    songSelection: [
+      "Finding and choosing songs was easy, so we spent more time singing and less time figuring out the system.",
+      "The song selection system was easy to use.",
+      "It was quick and easy to search for the songs we wanted.",
+      "The karaoke system was straightforward and easy to navigate."
+    ],
+
+    return: [
+      "I'd definitely come back for another karaoke night.",
+      "We had a great time and would absolutely come back.",
+      "Definitely planning to visit again.",
+      "This is a place I'd happily come back to with friends."
+    ]
+
+  };
+
+
+  const openings = [
+
+    "Had such a fun night at Spark!",
+
+    "Really enjoyed our time at Spark Karaoke Lounge.",
+
+    "Spark was a great choice for our karaoke night.",
+
+    "We had a really good experience at Spark.",
+
+    "Such a fun place for a night out with friends!",
+
+    "We came to Spark for karaoke and had a great time."
+
+  ];
+
+
+  const closings = [
+
+    "Overall, it was a really fun night.",
+
+    "Definitely a fun karaoke spot in the area.",
+
+    "We really enjoyed the experience.",
+
+    "Overall, Spark was a great place to spend the night with friends.",
+
+    "Would definitely recommend it for a fun karaoke night."
+
+  ];
+
+
+  let lastReview = "";
+
+
+  /* -------------------------
+     HELPER
+  ------------------------- */
+
+  function randomItem(array) {
+
+    return array[
+      Math.floor(Math.random() * array.length)
+    ];
+
+  }
+
+
+  /* -------------------------
+     GENERATE REVIEW
+  ------------------------- */
+
+  function generateReview() {
+
+    const selected =
+      Array.from(
+        document.querySelectorAll(".option.selected")
+      ).map(button => button.dataset.value);
+
+
+    if (selected.length === 0) {
+
+      alert("Please select at least one thing you enjoyed.");
+
+      return;
+
+    }
+
+
+    let sentences = [];
+
+    sentences.push(
+      randomItem(openings)
+    );
+
+
+    /* Shuffle selected choices */
+
+    const shuffled =
+      [...selected].sort(
+        () => Math.random() - 0.5
+      );
+
+
+    /* Use max 5 phrases to avoid overly long reviews */
+
+    shuffled
+      .slice(0, 5)
+      .forEach(key => {
+
+        if (phrases[key]) {
+
+          sentences.push(
+            randomItem(phrases[key])
+          );
+
+        }
+
+      });
+
+
+    /* Extra user text */
+
+    const extra =
+      document
+        .getElementById("extraText")
+        .value
+        .trim();
+
+
+    if (extra) {
+
+      let cleanExtra = extra;
+
+      if (
+        !cleanExtra.endsWith(".") &&
+        !cleanExtra.endsWith("!") &&
+        !cleanExtra.endsWith("?")
+      ) {
+
+        cleanExtra += ".";
+
+      }
+
+      sentences.push(cleanExtra);
+
+    }
+
+
+    /* Closing */
+
+    if (!selected.includes("return")) {
+
+      sentences.push(
+        randomItem(closings)
+      );
+
+    }
+
+
+    lastReview =
+      sentences.join(" ");
+
+
+    document
+      .getElementById("reviewText")
+      .textContent = lastReview;
+
+
+    document
+      .getElementById("result")
+      .style.display = "block";
+
+
+    document
+      .getElementById("platformSection")
+      .style.display = "block";
+
+
+    document
+      .getElementById("copyStatus")
+      .textContent = "";
+
+
+    setTimeout(() => {
+
+      document
+        .getElementById("result")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+    }, 100);
+
+  }
+
+
+  /* -------------------------
+     COPY REVIEW
+  ------------------------- */
+
+  async function copyReview() {
+
+    if (!lastReview) {
+      return;
+    }
+
+
+    try {
+
+      await navigator.clipboard.writeText(
+        lastReview
+      );
+
+      document
+        .getElementById("copyStatus")
+        .textContent =
+        "✓ Review copied — you're ready to post!";
+
+    }
+
+    catch (error) {
+
+      const temp =
+        document.createElement("textarea");
+
+      temp.value = lastReview;
+
+      document.body.appendChild(temp);
+
+      temp.select();
+
+      document.execCommand("copy");
+
+      document.body.removeChild(temp);
+
+
+      document
+        .getElementById("copyStatus")
+        .textContent =
+        "✓ Review copied — you're ready to post!";
+
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
