@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,13 +14,22 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top, #14276b 0%, #080b22 35%, #05050c 70%);
-      color: #ffffff;
+        radial-gradient(circle at top, #172b76 0%, #090c26 34%, #05050d 72%);
+      color: #fff;
       min-height: 100vh;
       line-height: 1.5;
+    }
+
+    button,
+    textarea {
+      font-family: inherit;
     }
 
     .page {
@@ -28,57 +38,74 @@
       margin: 0 auto;
       min-height: 100vh;
       background: #080915;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.65);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
       overflow: hidden;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero-wrap {
+      padding: 18px 18px 0;
+    }
 
     .hero {
       position: relative;
-      height: 400px;
-      background-image:
+      width: 100%;
+      height: 285px;
+      overflow: hidden;
+      border-radius: 20px;
+      background:
         linear-gradient(
           to bottom,
-          rgba(4, 6, 18, 0.08) 0%,
-          rgba(4, 6, 18, 0.10) 42%,
-          rgba(8, 9, 21, 0.96) 100%
+          rgba(4, 6, 18, 0.04),
+          rgba(4, 6, 18, 0.10) 55%,
+          rgba(4, 6, 18, 0.45) 100%
         ),
         url("SPARK-cover.png");
+
       background-size: cover;
       background-position: center;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 25px 24px 28px;
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35),
+        inset 0 0 0 1px rgba(255,255,255,0.06);
     }
 
     .hero-logo {
-      width: min(330px, 82%);
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 175px;
+      max-width: 48%;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.75));
+      filter:
+        drop-shadow(0 3px 6px rgba(0,0,0,0.65))
+        drop-shadow(0 0 8px rgba(0,0,0,0.35));
     }
 
-    /* INTRO */
+    /* =========================
+       INTRO
+    ========================== */
 
     .intro {
       text-align: center;
-      padding: 6px 28px 30px;
+      padding: 28px 28px 30px;
     }
 
     .intro h1 {
       font-size: 29px;
       font-weight: 700;
       letter-spacing: -0.5px;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
     }
 
     .intro p {
-      color: #bfc5dc;
+      color: #b7bdd1;
       font-size: 15px;
-      max-width: 510px;
-      margin: auto;
+      max-width: 520px;
+      margin: 0 auto;
     }
 
     .gold-line {
@@ -86,42 +113,49 @@
       height: 3px;
       border-radius: 20px;
       margin: 19px auto 0;
-      background: linear-gradient(
-        90deg,
-        #b77a22,
-        #ffe79a,
-        #d8a741
-      );
+
+      background:
+        linear-gradient(
+          90deg,
+          #a86c20,
+          #ffe5a0,
+          #c99636
+        );
     }
 
-    /* SECTIONS */
+    /* =========================
+       SECTIONS
+    ========================== */
 
     .section {
-      padding: 26px 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 28px 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
 
     .step-label {
+      color: #dab968;
       font-size: 11px;
-      font-weight: bold;
+      font-weight: 700;
       letter-spacing: 2.2px;
       text-transform: uppercase;
-      color: #d7b765;
-      margin-bottom: 7px;
+      margin-bottom: 6px;
     }
 
     .section h2 {
       font-size: 23px;
+      line-height: 1.25;
       margin-bottom: 7px;
     }
 
     .section-subtitle {
-      color: #9fa6bd;
+      color: #9ba2b8;
       font-size: 14px;
       margin-bottom: 20px;
     }
 
-    /* OPTIONS */
+    /* =========================
+       OPTIONS
+    ========================== */
 
     .options {
       display: grid;
@@ -130,187 +164,250 @@
     }
 
     .option {
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      width: 100%;
+      min-height: 88px;
+      padding: 14px 12px;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.13);
+
       background:
         linear-gradient(
           145deg,
-          rgba(28, 31, 61, 0.92),
-          rgba(13, 14, 32, 0.95)
+          rgba(29,32,63,0.96),
+          rgba(13,14,32,0.98)
         );
-      color: #ffffff;
-      border-radius: 15px;
-      min-height: 88px;
-      padding: 15px 12px;
+
+      color: #fff;
       cursor: pointer;
       text-align: left;
-      transition: 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 11px;
+
       font-size: 14px;
       font-weight: 600;
+
+      transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
     }
 
     .option:hover {
       transform: translateY(-1px);
-      border-color: rgba(120, 152, 255, 0.65);
+      border-color: rgba(124,150,255,0.55);
     }
 
     .option.selected {
-      border-color: #d8b35a;
+      border-color: #d6ad51;
+
       background:
         linear-gradient(
           145deg,
-          rgba(53, 53, 92, 1),
-          rgba(20, 20, 43, 1)
+          rgba(55,54,91,1),
+          rgba(20,20,43,1)
         );
+
       box-shadow:
-        inset 0 0 0 1px rgba(255, 219, 132, 0.25),
-        0 0 18px rgba(94, 116, 255, 0.17);
+        inset 0 0 0 1px rgba(255,224,151,0.18),
+        0 0 17px rgba(95,117,255,0.12);
     }
 
     .option-icon {
-      font-size: 25px;
       width: 31px;
       flex-shrink: 0;
       text-align: center;
+      font-size: 24px;
     }
 
-    /* TEXTAREA */
+    /* =========================
+       TEXT AREA
+    ========================== */
 
     textarea {
       width: 100%;
-      min-height: 115px;
+      min-height: 118px;
       resize: vertical;
-      border: 1px solid rgba(255, 255, 255, 0.13);
+
       border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.13);
+
       background: #111326;
       color: #fff;
-      padding: 16px;
+
+      padding: 15px 16px;
+
       outline: none;
-      font-family: inherit;
       font-size: 15px;
+      line-height: 1.55;
+
+      transition: border-color 0.18s ease;
     }
 
     textarea::placeholder {
-      color: #707890;
+      color: #70778d;
     }
 
     textarea:focus {
-      border-color: rgba(215, 183, 101, 0.75);
+      border-color: rgba(217,184,103,0.75);
     }
 
-    /* BUTTONS */
+    /* =========================
+       GENERATE
+    ========================== */
 
     .generate-btn {
       width: 100%;
       border: none;
       border-radius: 15px;
+
       padding: 17px 18px;
+      margin-top: 20px;
+
       font-size: 16px;
       font-weight: 700;
+
       color: #101018;
+
       cursor: pointer;
-      margin-top: 21px;
 
       background:
         linear-gradient(
           100deg,
-          #b97f28,
-          #ffe39a,
-          #c89237
+          #b77b25,
+          #ffe4a0,
+          #ca9638
         );
 
-      box-shadow: 0 6px 25px rgba(215, 170, 79, 0.20);
+      box-shadow:
+        0 7px 24px rgba(210,165,73,0.18);
+
+      transition:
+        transform 0.18s ease,
+        filter 0.18s ease;
     }
 
     .generate-btn:hover {
-      filter: brightness(1.07);
+      transform: translateY(-1px);
+      filter: brightness(1.05);
     }
 
-    /* REVIEW RESULT */
+    /* =========================
+       RESULT
+    ========================== */
 
     .result {
       display: none;
+
       margin-top: 22px;
       padding: 20px;
+
       background: #111326;
-      border: 1px solid rgba(255, 255, 255, 0.11);
+
       border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.11);
     }
 
     .result-title {
-      color: #d7b765;
+      color: #d8b765;
+
       font-size: 12px;
-      letter-spacing: 1.7px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+
       text-transform: uppercase;
+
       margin-bottom: 11px;
-      font-weight: bold;
     }
 
     #reviewText {
       color: #f4f4f7;
+
       font-size: 15px;
       line-height: 1.75;
+
       white-space: pre-wrap;
     }
 
     .review-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
+
       gap: 11px;
+
       margin-top: 18px;
     }
 
     .small-btn {
       border-radius: 12px;
+
       padding: 14px;
-      border: 1px solid rgba(255,255,255,0.15);
+
       font-size: 14px;
       font-weight: 700;
+
       cursor: pointer;
-      transition: 0.2s ease;
-    }
 
-    .copy-btn {
-      background: #ffffff;
-      color: #0c0d16;
-    }
-
-    .another-btn {
-      background: transparent;
-      color: #ffffff;
+      transition:
+        transform 0.18s ease,
+        filter 0.18s ease;
     }
 
     .small-btn:hover {
       transform: translateY(-1px);
     }
 
-    .copy-status {
-      text-align: center;
-      color: #b8e5bc;
-      font-size: 13px;
-      min-height: 21px;
-      margin-top: 9px;
+    .copy-btn {
+      background: #fff;
+      color: #101018;
+
+      border: 1px solid #fff;
     }
 
-    /* PLATFORMS */
+    .another-btn {
+      background: transparent;
+      color: #fff;
+
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .copy-status {
+      min-height: 20px;
+
+      text-align: center;
+
+      margin-top: 10px;
+
+      color: #b7e5bf;
+      font-size: 13px;
+    }
+
+    /* =========================
+       PLATFORMS
+    ========================== */
 
     .platform-section {
       display: none;
+
       padding: 28px 24px 40px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+      border-top: 1px solid rgba(255,255,255,0.08);
+
       text-align: center;
     }
 
     .platform-section h2 {
       font-size: 22px;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
 
     .platform-section p {
       font-size: 14px;
-      color: #969db3;
+      color: #999fb3;
+
       margin-bottom: 20px;
     }
 
@@ -321,49 +418,76 @@
 
     .platform-btn {
       display: block;
+
       width: 100%;
-      text-decoration: none;
-      padding: 16px;
+
       border-radius: 14px;
-      font-weight: 700;
+
+      padding: 16px;
+
+      text-decoration: none;
+
       font-size: 15px;
-      transition: 0.2s ease;
+      font-weight: 700;
+
+      transition:
+        transform 0.18s ease,
+        filter 0.18s ease;
+    }
+
+    .platform-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.04);
     }
 
     .google {
-      background: #ffffff;
+      background: #fff;
       color: #171717;
     }
 
     .yelp {
       background: #d32323;
-      color: #ffffff;
+      color: #fff;
     }
 
-    .platform-btn:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-    }
-
-    /* FOOTER */
+    /* =========================
+       FOOTER
+    ========================== */
 
     .footer {
-      padding: 24px;
+      padding: 23px;
+
+      border-top: 1px solid rgba(255,255,255,0.06);
+
       text-align: center;
+
       color: #62687a;
       font-size: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    /* MOBILE */
+    /* =========================
+       MOBILE
+    ========================== */
 
     @media (max-width: 520px) {
+
+      .hero-wrap {
+        padding: 14px 14px 0;
+      }
+
       .hero {
-        height: 345px;
+        height: 225px;
+        border-radius: 17px;
       }
 
       .hero-logo {
-        width: 76%;
+        top: 11px;
+        left: 11px;
+        width: 145px;
+      }
+
+      .intro {
+        padding: 24px 21px 27px;
       }
 
       .intro h1 {
@@ -371,53 +495,69 @@
       }
 
       .section {
-        padding-left: 18px;
-        padding-right: 18px;
+        padding: 25px 17px;
       }
 
       .options {
-        grid-template-columns: 1fr 1fr;
         gap: 9px;
       }
 
       .option {
-        min-height: 92px;
-        padding: 13px 10px;
+        min-height: 91px;
+        padding: 12px 9px;
+
         font-size: 13px;
       }
 
       .option-icon {
-        font-size: 22px;
         width: 26px;
+        font-size: 21px;
+      }
+
+      .review-actions {
+        grid-template-columns: 1fr;
       }
     }
 
   </style>
+
 </head>
+
 
 <body>
 
 <div class="page">
 
-  <!-- HERO -->
 
-  <section class="hero">
-    <img
-      src="SPARK-logo.png"
-      alt="Spark Karaoke Lounge"
-      class="hero-logo"
-    />
-  </section>
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <div class="hero-wrap">
+
+    <section class="hero">
+
+      <img
+        src="SPARK-logo.png"
+        alt="Spark Karaoke Lounge"
+        class="hero-logo"
+      />
+
+    </section>
+
+  </div>
 
 
-  <!-- INTRO -->
+  <!-- =========================
+       INTRO
+  ========================== -->
 
   <section class="intro">
 
     <h1>How was your visit?</h1>
 
     <p>
-      Tell us what you enjoyed and we'll help you put your experience into words.
+      Tell us what stood out and we'll help you turn your experience into a review.
     </p>
 
     <div class="gold-line"></div>
@@ -425,20 +565,27 @@
   </section>
 
 
-  <!-- STEP 1 -->
+  <!-- =========================
+       STEP 1
+  ========================== -->
 
   <section class="section">
 
-    <div class="step-label">Step 1</div>
+    <div class="step-label">
+      Step 1
+    </div>
 
-    <h2>What did you enjoy?</h2>
+    <h2>
+      What did you enjoy?
+    </h2>
 
     <p class="section-subtitle">
       Select everything that stood out during your visit.
     </p>
 
 
-    <div class="options" id="step1">
+    <div class="options">
+
 
       <button
         type="button"
@@ -499,25 +646,33 @@
         <span>Comfortable Private Rooms</span>
       </button>
 
+
     </div>
 
   </section>
 
 
-  <!-- STEP 2 -->
+  <!-- =========================
+       STEP 2
+  ========================== -->
 
   <section class="section">
 
-    <div class="step-label">Step 2</div>
+    <div class="step-label">
+      Step 2
+    </div>
 
-    <h2>What made your visit special?</h2>
+    <h2>
+      What made your visit special?
+    </h2>
 
     <p class="section-subtitle">
       Choose any that match your experience.
     </p>
 
 
-    <div class="options" id="step2">
+    <div class="options">
+
 
       <button
         type="button"
@@ -578,18 +733,25 @@
         <span>Would Come Again</span>
       </button>
 
+
     </div>
 
   </section>
 
 
-  <!-- STEP 3 -->
+  <!-- =========================
+       STEP 3
+  ========================== -->
 
   <section class="section">
 
-    <div class="step-label">Step 3</div>
+    <div class="step-label">
+      Step 3
+    </div>
 
-    <h2>Anything else?</h2>
+    <h2>
+      Anything else?
+    </h2>
 
     <p class="section-subtitle">
       Optional — add a personal detail about your visit.
@@ -598,8 +760,8 @@
 
     <textarea
       id="extraText"
-      maxlength="260"
-      placeholder="For example: We came for a birthday, the staff was very helpful, or we had a great night with friends..."
+      maxlength="300"
+      placeholder="For example: We came for a birthday, the staff was really helpful, or we had a fun night with friends..."
     ></textarea>
 
 
@@ -612,9 +774,10 @@
     </button>
 
 
-    <!-- REVIEW RESULT -->
-
-    <div class="result" id="result">
+    <div
+      class="result"
+      id="result"
+    >
 
       <div class="result-title">
         Your Review Draft
@@ -633,6 +796,7 @@
           Copy Review
         </button>
 
+
         <button
           type="button"
           class="small-btn another-btn"
@@ -642,6 +806,7 @@
         </button>
 
       </div>
+
 
       <div
         class="copy-status"
@@ -653,14 +818,18 @@
   </section>
 
 
-  <!-- REVIEW PLATFORMS -->
+  <!-- =========================
+       PLATFORMS
+  ========================== -->
 
   <section
     class="platform-section"
     id="platformSection"
   >
 
-    <h2>Ready to share?</h2>
+    <h2>
+      Ready to share?
+    </h2>
 
     <p>
       Copy your review above, then choose where you'd like to post it.
@@ -668,6 +837,7 @@
 
 
     <div class="platform-buttons">
+
 
       <a
         href="https://g.page/r/Ce7O9_dyHZt7EBM/review"
@@ -688,130 +858,44 @@
         Visit us on Yelp
       </a>
 
+
     </div>
 
   </section>
 
 
-  <!-- FOOTER -->
-
   <div class="footer">
     Spark Karaoke Lounge
   </div>
 
-</div>
 
+</div>
 
 
 <script>
 
-  /* -------------------------
-     OPTION SELECTION
-  ------------------------- */
+  /* ==========================================================
+     SELECT / DESELECT OPTIONS
+  ========================================================== */
 
-  document.querySelectorAll(".option").forEach(button => {
+  document
+    .querySelectorAll(".option")
+    .forEach(button => {
 
-    button.addEventListener("click", () => {
+      button.addEventListener("click", () => {
 
-      button.classList.toggle("selected");
+        button.classList.toggle("selected");
+
+      });
 
     });
 
-  });
 
 
-  /* -------------------------
-     REVIEW PHRASES
-  ------------------------- */
-
-  const phrases = {
-
-    latestSongs: [
-      "They had a really good selection of newer songs, which made the karaoke experience even more fun.",
-      "I was impressed by how many current and popular songs they had available.",
-      "The song selection was great, especially if you're looking for newer releases.",
-      "There were plenty of newer songs to choose from, so everyone in our group found something they wanted to sing."
-    ],
-
-    food: [
-      "They also had a surprisingly good variety of food and snacks to choose from.",
-      "The food and snack selection was much better than I expected for a karaoke spot.",
-      "We ordered a few snacks during the night and really enjoyed having so many options.",
-      "There were plenty of food and snack choices, which was perfect for a longer karaoke night."
-    ],
-
-    service: [
-      "The staff was friendly and helpful throughout our visit.",
-      "Service was attentive and everyone we interacted with was really nice.",
-      "The staff made the whole experience easy and enjoyable.",
-      "Everyone working there was welcoming and helpful."
-    ],
-
-    sound: [
-      "The sound system was excellent and made singing feel even more fun.",
-      "The microphones and sound quality were great.",
-      "The karaoke setup sounded really good and the equipment worked smoothly.",
-      "The sound system was one of the highlights of the night."
-    ],
-
-    atmosphere: [
-      "The lighting and atmosphere gave the place a really fun nightlife feel.",
-      "The whole place had a cool, modern atmosphere that felt perfect for a night out.",
-      "I really liked the blue and neon lighting throughout the space.",
-      "The atmosphere was energetic and stylish without feeling too crowded."
-    ],
-
-    rooms: [
-      "Our private room was comfortable and gave us plenty of space to enjoy the night.",
-      "The private karaoke room was comfortable and worked perfectly for our group.",
-      "The room felt spacious and comfortable.",
-      "Having a private room made the experience much more relaxed and fun."
-    ],
-
-    party: [
-      "This would be a great place for birthdays or celebrations.",
-      "It's definitely a fun option for birthday parties and special occasions.",
-      "The setup would work really well for a party or celebration.",
-      "I could definitely see coming back here for another birthday or special event."
-    ],
-
-    groups: [
-      "It's a great spot to come with a group of friends.",
-      "The experience was perfect for a group night out.",
-      "This is the kind of place that works really well for groups.",
-      "We had a great time as a group and everyone found something they enjoyed."
-    ],
-
-    drinks: [
-      "They also had a nice selection of drinks available throughout the night.",
-      "The drink selection gave us plenty of options.",
-      "There were plenty of drinks to choose from while we were singing.",
-      "Having a good variety of drinks made the night even better."
-    ],
-
-    clean: [
-      "Everything felt clean and comfortable during our visit.",
-      "The space was clean, comfortable, and well maintained.",
-      "I appreciated how clean and organized everything felt.",
-      "The room and common areas were clean and comfortable."
-    ],
-
-    songSelection: [
-      "Finding and choosing songs was easy, so we spent more time singing and less time figuring out the system.",
-      "The song selection system was easy to use.",
-      "It was quick and easy to search for the songs we wanted.",
-      "The karaoke system was straightforward and easy to navigate."
-    ],
-
-    return: [
-      "I'd definitely come back for another karaoke night.",
-      "We had a great time and would absolutely come back.",
-      "Definitely planning to visit again.",
-      "This is a place I'd happily come back to with friends."
-    ]
-
-  };
-
+  /* ==========================================================
+     OPENINGS
+     30 OPTIONS
+  ========================================================== */
 
   const openings = [
 
@@ -819,16 +903,70 @@
 
     "Really enjoyed our time at Spark Karaoke Lounge.",
 
-    "Spark was a great choice for our karaoke night.",
+    "Spark ended up being a great choice for our karaoke night.",
 
     "We had a really good experience at Spark.",
 
     "Such a fun place for a night out with friends!",
 
-    "We came to Spark for karaoke and had a great time."
+    "We came to Spark for karaoke and had a great time.",
+
+    "Came here with a few friends and had an awesome night.",
+
+    "We decided to try Spark for a night out and really enjoyed it.",
+
+    "This was our first time at Spark and we had a lot of fun.",
+
+    "Spark was exactly what we were looking for for our karaoke night.",
+
+    "Had a great time here with friends and would definitely come back.",
+
+    "We stopped by Spark for karaoke and the whole experience was really fun.",
+
+    "Came here for a night out and Spark did not disappoint.",
+
+    "Our group had such a good time at Spark.",
+
+    "Really fun karaoke spot with a great overall vibe.",
+
+    "We were looking for a karaoke place for the night and Spark was a great find.",
+
+    "Had a really enjoyable night at Spark with our group.",
+
+    "Spark made for such a fun evening with friends.",
+
+    "This place was a lot of fun from the moment we arrived.",
+
+    "We had been wanting to try Spark and finally made it in.",
+
+    "Glad we chose Spark for our karaoke night.",
+
+    "Spark is a really fun spot if you're planning a night out with friends.",
+
+    "We came in for karaoke and ended up staying longer than we expected.",
+
+    "Had a fun and easygoing night at Spark.",
+
+    "Our night at Spark turned out better than we expected.",
+
+    "Really liked the experience here from start to finish.",
+
+    "Spark was a fun place to spend the evening with friends.",
+
+    "We had heard about Spark and finally got the chance to check it out.",
+
+    "This was such a fun addition to our night out.",
+
+    "We had a great karaoke night at Spark and everyone in our group enjoyed it."
 
   ];
 
+
+
+  /* ==========================================================
+     CLOSINGS
+     25 OPTIONS
+  ========================================================== */
 
   const closings = [
 
@@ -840,160 +978,1018 @@
 
     "Overall, Spark was a great place to spend the night with friends.",
 
-    "Would definitely recommend it for a fun karaoke night."
+    "Would definitely recommend it for a fun karaoke night.",
+
+    "We're already talking about coming back again.",
+
+    "Definitely worth checking out if you're looking for a karaoke spot.",
+
+    "We left having had a really good time.",
+
+    "I'd happily come back for another night here.",
+
+    "It was a great place to relax, sing, and hang out with friends.",
+
+    "Overall, it was exactly the kind of karaoke night we were hoping for.",
+
+    "I can definitely see us coming back again.",
+
+    "A really solid choice for a group night out.",
+
+    "We'd definitely keep Spark in mind for our next karaoke night.",
+
+    "Great place to spend a few hours with friends.",
+
+    "Everyone in our group had a good time.",
+
+    "We had a lot of fun and would recommend giving Spark a try.",
+
+    "It made for a really memorable night out.",
+
+    "Definitely adding Spark to our list of places to come back to.",
+
+    "It was an easy place to enjoy a full night with friends.",
+
+    "We had a great experience and would recommend it to anyone who enjoys karaoke.",
+
+    "Overall, a really fun atmosphere and an enjoyable night.",
+
+    "We'd be happy to come back the next time we're planning karaoke.",
+
+    "It was a fun, comfortable place to hang out and sing.",
+
+    "Definitely somewhere we'd visit again."
 
   ];
 
 
+
+  /* ==========================================================
+     PHRASE BANK
+     12 CATEGORIES
+     16 OPTIONS EACH
+     = 192 DIFFERENT FEATURE PHRASES
+  ========================================================== */
+
+  const phrases = {
+
+
+    /* =========================
+       LATEST SONGS
+    ========================== */
+
+    latestSongs: [
+
+      "They had a really good selection of newer songs.",
+
+      "I was surprised by how many recent songs were already available.",
+
+      "One thing I really liked was how up to date the song selection was.",
+
+      "They actually had a lot of the newer releases we were looking for.",
+
+      "The music library felt very current compared with other karaoke places I've been to.",
+
+      "We had no trouble finding newer songs that everyone wanted to sing.",
+
+      "I loved that their karaoke catalog included so many recent releases.",
+
+      "Their song list is surprisingly up to date.",
+
+      "A big plus was being able to find a lot of current songs.",
+
+      "The newer song selection definitely stood out to us.",
+
+      "We found way more recent music than we expected.",
+
+      "If you like singing newer songs, their selection is really solid.",
+
+      "They keep their music selection pretty current, which made the night a lot more fun.",
+
+      "There was a great mix of newer music available throughout the night.",
+
+      "I was especially happy with how many recently released songs they had.",
+
+      "It was nice going to a karaoke place where the song library actually felt current."
+
+    ],
+
+
+
+    /* =========================
+       FOOD & SNACKS
+    ========================== */
+
+    food: [
+
+      "They also had a really good variety of food and snacks.",
+
+      "The snack selection was much better than I expected from a karaoke place.",
+
+      "We ordered several things to eat and there were plenty of options to choose from.",
+
+      "It was nice having such a wide food and snack menu while we were singing.",
+
+      "There were lots of snacks available, which made it easy to stay for a longer karaoke session.",
+
+      "The food selection was surprisingly extensive.",
+
+      "We appreciated having plenty of small bites to order throughout the night.",
+
+      "There was a good mix of food and snacks for everyone in our group.",
+
+      "The food options made the whole karaoke experience more enjoyable.",
+
+      "We liked being able to order snacks without having to leave the room.",
+
+      "They offer much more than just basic karaoke snacks.",
+
+      "Our group tried a few different items and enjoyed having so many choices.",
+
+      "The menu had enough variety that everyone found something they wanted.",
+
+      "Having a full selection of snacks was a nice bonus.",
+
+      "The food and snacks were a great addition to the night.",
+
+      "We were impressed by how many food choices they had for a karaoke lounge."
+
+    ],
+
+
+
+    /* =========================
+       SERVICE
+    ========================== */
+
+    service: [
+
+      "The staff was friendly and helpful throughout our visit.",
+
+      "Everyone working there was welcoming and easy to talk to.",
+
+      "The service was attentive without feeling intrusive.",
+
+      "The staff made the whole experience really easy for us.",
+
+      "Whenever we needed something, someone was there to help.",
+
+      "Everyone we interacted with was friendly and professional.",
+
+      "The team was helpful from the moment we arrived.",
+
+      "Service was smooth and the staff was very nice.",
+
+      "The staff helped make the night feel relaxed and enjoyable.",
+
+      "We appreciated how friendly everyone was.",
+
+      "The employees were accommodating and made us feel welcome.",
+
+      "The service was one of the things that stood out during our visit.",
+
+      "Everyone was polite, helpful, and easy to reach when we needed something.",
+
+      "We had a great experience with the staff throughout the night.",
+
+      "The team took good care of our group.",
+
+      "Friendly service made the whole night even better."
+
+    ],
+
+
+
+    /* =========================
+       SOUND SYSTEM
+    ========================== */
+
+    sound: [
+
+      "The sound system was really good and made singing much more fun.",
+
+      "The microphones and overall sound quality worked great.",
+
+      "We were impressed with how clear the karaoke system sounded.",
+
+      "The audio setup was one of the highlights of the experience.",
+
+      "The microphones sounded good and everything worked smoothly.",
+
+      "The sound quality helped make the room feel like a real karaoke setup.",
+
+      "The music and vocals came through clearly.",
+
+      "The karaoke equipment felt well maintained and easy to use.",
+
+      "The sound system had plenty of power without being uncomfortable.",
+
+      "We really liked the quality of the microphones.",
+
+      "The audio was clear and made even casual singers feel comfortable.",
+
+      "The equipment worked well the whole time we were there.",
+
+      "Everything sounded balanced and made singing more enjoyable.",
+
+      "The karaoke system was noticeably better than what we've experienced at some other places.",
+
+      "Good sound quality made a big difference in the overall experience.",
+
+      "The microphones and speakers performed really well throughout the night."
+
+    ],
+
+
+
+    /* =========================
+       ATMOSPHERE
+    ========================== */
+
+    atmosphere: [
+
+      "The lighting and atmosphere gave the place a really fun nightlife feel.",
+
+      "The whole space had a cool, modern atmosphere.",
+
+      "I really liked the blue and neon lighting throughout the venue.",
+
+      "The atmosphere felt energetic without being overwhelming.",
+
+      "The design and lighting made the place feel more upscale than a typical karaoke spot.",
+
+      "There was a really fun lounge vibe throughout the space.",
+
+      "The atmosphere immediately made it feel like a night out.",
+
+      "Everything from the lighting to the decor fit the karaoke experience really well.",
+
+      "The place had a stylish and modern feel.",
+
+      "We loved the overall vibe and lighting.",
+
+      "The environment felt lively and perfect for karaoke.",
+
+      "The neon lighting added a lot to the experience.",
+
+      "The interior had a fun, polished nightlife atmosphere.",
+
+      "The mood of the space made the night feel a little more special.",
+
+      "We really enjoyed the modern look and energetic vibe.",
+
+      "The atmosphere was one of our favorite parts of the visit."
+
+    ],
+
+
+
+    /* =========================
+       PRIVATE ROOMS
+    ========================== */
+
+    rooms: [
+
+      "Our private room was comfortable and gave us plenty of space.",
+
+      "The room worked perfectly for our group.",
+
+      "We really liked having a private space to sing and hang out.",
+
+      "The private room felt comfortable and well set up.",
+
+      "There was enough room for everyone to relax without feeling crowded.",
+
+      "The room setup made it easy for our group to enjoy the whole night together.",
+
+      "Having our own room made the experience much more comfortable.",
+
+      "The private room was a nice size and felt welcoming.",
+
+      "We appreciated having a space where everyone could relax and sing.",
+
+      "The room felt spacious enough for our group.",
+
+      "The private room setup was great for hanging out between songs.",
+
+      "We liked the privacy and comfort of the room.",
+
+      "The room had everything we needed for a good karaoke night.",
+
+      "It was comfortable enough that we could easily spend a few hours there.",
+
+      "The private room gave us a relaxed place to enjoy the night.",
+
+      "The room setup made the entire experience feel much more personal."
+
+    ],
+
+
+
+    /* =========================
+       PARTY
+    ========================== */
+
+    party: [
+
+      "This would be a great place for birthdays or celebrations.",
+
+      "The setup works really well for a party.",
+
+      "I could definitely see coming back here for a birthday.",
+
+      "It feels like a really good place for special occasions.",
+
+      "The private rooms and atmosphere make it a great party spot.",
+
+      "This would be an easy choice for a birthday celebration.",
+
+      "The space feels made for celebrating with friends.",
+
+      "We could definitely imagine having another party here.",
+
+      "It's a fun option if you're looking for somewhere different to celebrate.",
+
+      "Everything about the setup works well for group celebrations.",
+
+      "It would be a great place to bring friends for a special occasion.",
+
+      "The atmosphere makes it feel more festive than a regular night out.",
+
+      "This would work really well for birthdays, celebrations, or a casual party.",
+
+      "We liked how easy it would be to plan a celebration here.",
+
+      "The karaoke rooms make it a fun choice for a group event.",
+
+      "Definitely a place I'd consider for a future celebration."
+
+    ],
+
+
+
+    /* =========================
+       GROUPS
+    ========================== */
+
+    groups: [
+
+      "It's a great spot to come with a group of friends.",
+
+      "The whole experience worked really well for our group.",
+
+      "This is the kind of place that's especially fun with several people.",
+
+      "Everyone in our group found something they enjoyed.",
+
+      "It was easy for our whole group to relax and have fun together.",
+
+      "The setup makes it a good choice for group outings.",
+
+      "We had a great time bringing everyone together in one private room.",
+
+      "It's a fun place for a group night out.",
+
+      "The private room made it easy for our group to hang out together.",
+
+      "This would be an easy recommendation for groups of friends.",
+
+      "Everyone had something to sing and the group atmosphere was really fun.",
+
+      "The experience is definitely better when you bring a group.",
+
+      "It worked well for everyone in our party.",
+
+      "Our group had a lot of fun and the setup made everything simple.",
+
+      "If you're planning a group outing, this is a really good option.",
+
+      "The space makes it easy to enjoy a night out with several friends."
+
+    ],
+
+
+
+    /* =========================
+       DRINKS
+    ========================== */
+
+    drinks: [
+
+      "They also had a good selection of drinks.",
+
+      "There were plenty of drink options to choose from throughout the night.",
+
+      "We liked having a variety of drinks available while we were singing.",
+
+      "The drink selection was a nice part of the overall experience.",
+
+      "Our group had no trouble finding drinks everyone liked.",
+
+      "There was a good variety available for a night out.",
+
+      "It was convenient being able to order drinks while staying in the room.",
+
+      "The beverage options fit the lounge atmosphere really well.",
+
+      "We appreciated having several different drink choices.",
+
+      "The drink menu added to the overall nightlife feel.",
+
+      "There were enough options that everyone in our group found something.",
+
+      "Having drinks available made it easy to settle in for the night.",
+
+      "The selection worked well for a group with different preferences.",
+
+      "It was nice having drinks available without interrupting the karaoke.",
+
+      "The beverage selection was another nice bonus.",
+
+      "We liked being able to enjoy drinks while spending the whole night in our room."
+
+    ],
+
+
+
+    /* =========================
+       CLEAN
+    ========================== */
+
+    clean: [
+
+      "Everything felt clean and comfortable during our visit.",
+
+      "The space was clean, organized, and well maintained.",
+
+      "Our room felt comfortable and taken care of.",
+
+      "I appreciated how clean everything looked.",
+
+      "The private room and common areas both felt well maintained.",
+
+      "Everything was neat when we arrived.",
+
+      "The space felt clean even with how busy the night was.",
+
+      "Our room was clean and ready when we got there.",
+
+      "The overall environment felt tidy and comfortable.",
+
+      "We liked how well kept the space was.",
+
+      "The cleanliness helped make the room feel more comfortable.",
+
+      "Everything looked organized and in good condition.",
+
+      "The room felt fresh and well maintained.",
+
+      "We had no issues with cleanliness during our visit.",
+
+      "The venue felt cared for and comfortable.",
+
+      "It was nice to see the rooms and common areas kept in good condition."
+
+    ],
+
+
+
+    /* =========================
+       SONG SELECTION SYSTEM
+    ========================== */
+
+    songSelection: [
+
+      "Finding and choosing songs was really easy.",
+
+      "The song selection system was simple to use.",
+
+      "It was quick to search for the songs we wanted.",
+
+      "We didn't have to spend much time figuring out how the karaoke system worked.",
+
+      "The interface made it easy to keep adding songs throughout the night.",
+
+      "Searching for music was straightforward.",
+
+      "Even people in our group who weren't familiar with the system figured it out quickly.",
+
+      "Choosing songs was fast, which meant more time actually singing.",
+
+      "The karaoke controls were pretty intuitive.",
+
+      "We liked how easy it was to move from one song to the next.",
+
+      "The song search system worked smoothly.",
+
+      "It didn't take long at all to learn how everything worked.",
+
+      "Adding songs to the queue was simple.",
+
+      "The system was easy enough that everyone in the room could use it.",
+
+      "We were able to find and queue songs without any trouble.",
+
+      "The easy song selection made the whole experience more relaxed."
+
+    ],
+
+
+
+    /* =========================
+       WOULD RETURN
+    ========================== */
+
+    return: [
+
+      "I'd definitely come back for another karaoke night.",
+
+      "We had a great time and would absolutely visit again.",
+
+      "We're already planning another night here.",
+
+      "This is somewhere I'd happily return with friends.",
+
+      "We would definitely keep Spark in mind for our next night out.",
+
+      "It was fun enough that we'd have no problem coming back.",
+
+      "I can see this becoming one of our regular karaoke spots.",
+
+      "We'd definitely return when we're in the mood for karaoke again.",
+
+      "The experience left us wanting to come back.",
+
+      "We'd happily bring another group here in the future.",
+
+      "Definitely somewhere we'd visit again.",
+
+      "We enjoyed ourselves enough to already be talking about another visit.",
+
+      "I'd recommend it and would come back myself.",
+
+      "This is a place we'd feel comfortable returning to.",
+
+      "We had enough fun that another visit is definitely happening.",
+
+      "Spark is going on our list for future karaoke nights."
+
+    ]
+
+  };
+
+
+
+  /* ==========================================================
+     REVIEW MEMORY
+     Helps "Try Another" avoid repeating the same components
+  ========================================================== */
+
   let lastReview = "";
 
+  let lastOpening = "";
 
-  /* -------------------------
-     HELPER
-  ------------------------- */
+  let lastClosing = "";
+
+  let lastPhraseIndexes = {};
+
+
+
+  /* ==========================================================
+     HELPERS
+  ========================================================== */
+
+  function randomIndex(array) {
+
+    return Math.floor(
+      Math.random() * array.length
+    );
+
+  }
+
+
 
   function randomItem(array) {
 
     return array[
-      Math.floor(Math.random() * array.length)
+      randomIndex(array)
     ];
 
   }
 
 
-  /* -------------------------
+
+  function randomDifferent(array, previous) {
+
+    if (array.length <= 1) {
+      return array[0];
+    }
+
+    let choice = randomItem(array);
+
+    let attempts = 0;
+
+    while (
+      choice === previous &&
+      attempts < 15
+    ) {
+
+      choice = randomItem(array);
+
+      attempts++;
+
+    }
+
+    return choice;
+
+  }
+
+
+
+  function phraseFor(key) {
+
+    const bank = phrases[key];
+
+    if (!bank || !bank.length) {
+      return "";
+    }
+
+    const previous =
+      lastPhraseIndexes[key];
+
+    let index =
+      randomIndex(bank);
+
+    let attempts = 0;
+
+    while (
+      index === previous &&
+      bank.length > 1 &&
+      attempts < 15
+    ) {
+
+      index =
+        randomIndex(bank);
+
+      attempts++;
+
+    }
+
+    lastPhraseIndexes[key] =
+      index;
+
+    return bank[index];
+
+  }
+
+
+
+  function shuffle(array) {
+
+    const copy = [...array];
+
+    for (
+      let i = copy.length - 1;
+      i > 0;
+      i--
+    ) {
+
+      const j =
+        Math.floor(
+          Math.random() * (i + 1)
+        );
+
+      [
+        copy[i],
+        copy[j]
+      ] = [
+        copy[j],
+        copy[i]
+      ];
+
+    }
+
+    return copy;
+
+  }
+
+
+
+  /* ==========================================================
+     REVIEW LENGTH
+     
+     Automatically chooses different review sizes.
+     
+     Short   = fewer feature sentences
+     Medium  = moderate detail
+     Long    = more selected features
+  ========================================================== */
+
+  function chooseLength() {
+
+    const roll =
+      Math.random();
+
+    /*
+       Around:
+       28% short
+       47% medium
+       25% long
+    */
+
+    if (roll < 0.28) {
+      return "short";
+    }
+
+    if (roll < 0.75) {
+      return "medium";
+    }
+
+    return "long";
+
+  }
+
+
+
+  function numberOfFeatures(
+    length,
+    selectedCount
+  ) {
+
+    if (selectedCount <= 2) {
+      return selectedCount;
+    }
+
+
+    if (length === "short") {
+
+      return Math.min(
+        selectedCount,
+        Math.random() < 0.55 ? 2 : 3
+      );
+
+    }
+
+
+    if (length === "medium") {
+
+      return Math.min(
+        selectedCount,
+        selectedCount >= 4 ? 4 : 3
+      );
+
+    }
+
+
+    return Math.min(
+      selectedCount,
+      5
+    );
+
+  }
+
+
+
+  /* ==========================================================
+     CLEAN OPTIONAL USER TEXT
+  ========================================================== */
+
+  function cleanExtraText(text) {
+
+    let clean =
+      text.trim();
+
+    if (!clean) {
+      return "";
+    }
+
+    clean =
+      clean.charAt(0).toUpperCase() +
+      clean.slice(1);
+
+    if (
+      !clean.endsWith(".") &&
+      !clean.endsWith("!") &&
+      !clean.endsWith("?")
+    ) {
+
+      clean += ".";
+
+    }
+
+    return clean;
+
+  }
+
+
+
+  /* ==========================================================
      GENERATE REVIEW
-  ------------------------- */
+  ========================================================== */
 
   function generateReview() {
 
     const selected =
-      Array.from(
-        document.querySelectorAll(".option.selected")
-      ).map(button => button.dataset.value);
+      Array
+        .from(
+          document.querySelectorAll(
+            ".option.selected"
+          )
+        )
+        .map(
+          button =>
+            button.dataset.value
+        );
 
 
     if (selected.length === 0) {
 
-      alert("Please select at least one thing you enjoyed.");
+      alert(
+        "Please select at least one thing you enjoyed."
+      );
 
       return;
 
     }
 
 
-    let sentences = [];
-
-    sentences.push(
-      randomItem(openings)
-    );
+    const length =
+      chooseLength();
 
 
-    /* Shuffle selected choices */
+    const shuffledSelected =
+      shuffle(selected);
 
-    const shuffled =
-      [...selected].sort(
-        () => Math.random() - 0.5
+
+    const featureCount =
+      numberOfFeatures(
+        length,
+        shuffledSelected.length
       );
 
 
-    /* Use max 5 phrases to avoid overly long reviews */
+    const chosenFeatures =
+      shuffledSelected.slice(
+        0,
+        featureCount
+      );
 
-    shuffled
-      .slice(0, 5)
-      .forEach(key => {
 
-        if (phrases[key]) {
+    let sentences = [];
 
-          sentences.push(
-            randomItem(phrases[key])
-          );
 
+    /* OPENING */
+
+    const opening =
+      randomDifferent(
+        openings,
+        lastOpening
+      );
+
+    lastOpening =
+      opening;
+
+    sentences.push(opening);
+
+
+    /* FEATURE SENTENCES */
+
+    chosenFeatures.forEach(
+      key => {
+
+        const sentence =
+          phraseFor(key);
+
+        if (sentence) {
+          sentences.push(sentence);
         }
 
-      });
-
-
-    /* Extra user text */
-
-    const extra =
-      document
-        .getElementById("extraText")
-        .value
-        .trim();
-
-
-    if (extra) {
-
-      let cleanExtra = extra;
-
-      if (
-        !cleanExtra.endsWith(".") &&
-        !cleanExtra.endsWith("!") &&
-        !cleanExtra.endsWith("?")
-      ) {
-
-        cleanExtra += ".";
-
       }
+    );
 
-      sentences.push(cleanExtra);
+
+    /* OPTIONAL CUSTOM TEXT */
+
+    const customText =
+      cleanExtraText(
+        document
+          .getElementById("extraText")
+          .value
+      );
+
+
+    if (customText) {
+
+      sentences.push(
+        customText
+      );
 
     }
 
 
-    /* Closing */
+    /* CLOSING
 
-    if (!selected.includes("return")) {
+       If "Would Come Again" is already used,
+       we sometimes skip a closing to avoid repetition.
+    */
 
-      sentences.push(
-        randomItem(closings)
-      );
+    const usedReturn =
+      chosenFeatures.includes("return");
+
+
+    const shouldAddClosing =
+      !usedReturn ||
+      Math.random() < 0.35;
+
+
+    if (shouldAddClosing) {
+
+      const closing =
+        randomDifferent(
+          closings,
+          lastClosing
+        );
+
+      lastClosing =
+        closing;
+
+      sentences.push(closing);
+
+    }
+
+
+    let review =
+      sentences.join(" ");
+
+
+    /*
+       Very small safeguard:
+       If random generation somehow creates
+       exactly the same full review,
+       run it one more time.
+    */
+
+    if (
+      review === lastReview &&
+      selected.length > 1
+    ) {
+
+      generateReview();
+
+      return;
 
     }
 
 
     lastReview =
-      sentences.join(" ");
+      review;
 
 
     document
       .getElementById("reviewText")
-      .textContent = lastReview;
+      .textContent =
+        review;
 
 
     document
       .getElementById("result")
-      .style.display = "block";
+      .style.display =
+        "block";
 
 
     document
       .getElementById("platformSection")
-      .style.display = "block";
+      .style.display =
+        "block";
 
 
     document
       .getElementById("copyStatus")
-      .textContent = "";
+      .textContent =
+        "";
 
 
-    setTimeout(() => {
+    setTimeout(
+      () => {
 
-      document
-        .getElementById("result")
-        .scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
+        document
+          .getElementById("result")
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
 
-    }, 100);
+      },
+      100
+    );
 
   }
 
 
-  /* -------------------------
+
+  /* ==========================================================
      COPY REVIEW
-  ------------------------- */
+  ========================================================== */
 
   async function copyReview() {
 
@@ -1004,43 +2000,70 @@
 
     try {
 
-      await navigator.clipboard.writeText(
-        lastReview
-      );
+      await navigator
+        .clipboard
+        .writeText(
+          lastReview
+        );
+
 
       document
         .getElementById("copyStatus")
         .textContent =
-        "✓ Review copied — you're ready to post!";
+          "✓ Review copied — you're ready to post!";
 
     }
 
     catch (error) {
 
+
       const temp =
-        document.createElement("textarea");
+        document.createElement(
+          "textarea"
+        );
 
-      temp.value = lastReview;
 
-      document.body.appendChild(temp);
+      temp.value =
+        lastReview;
 
+
+      temp.style.position =
+        "fixed";
+
+      temp.style.opacity =
+        "0";
+
+
+      document.body.appendChild(
+        temp
+      );
+
+
+      temp.focus();
       temp.select();
 
-      document.execCommand("copy");
 
-      document.body.removeChild(temp);
+      document.execCommand(
+        "copy"
+      );
+
+
+      document.body.removeChild(
+        temp
+      );
 
 
       document
         .getElementById("copyStatus")
         .textContent =
-        "✓ Review copied — you're ready to post!";
+          "✓ Review copied — you're ready to post!";
 
     }
 
   }
 
 </script>
+
 
 </body>
 </html>
